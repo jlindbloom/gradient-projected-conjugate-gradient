@@ -229,16 +229,12 @@ class GPCGSolver:
     def eval_projected_gradient(self, x, tol=1e-8):
         """Evaluates the projected gradient."""
         grad = self.grad_qfunc(x)
-        proj_grad = []
-        for j in range(self.n):
-            if np.abs(x[j] - self.lower_bounds[j]) < tol:
-                proj_grad.append( np.amin([grad[j], 0.0]) )
-            elif np.abs(x[j] - self.upper_bounds[j]) < tol:
-                proj_grad.append( np.amax([grad[j], 0.0]) )
-            else:
-                proj_grad.append(grad[j])
+        
+        condlist = [ np.abs(x - self.lower_bounds) < tol,  np.abs(x - self.upper_bounds) < tol, True ]
+        choicelist = [ np.minimum(grad, np.zeros_like(grad)), np.maximum(grad, np.zeros_like(grad)), grad ]
+        proj_grad = np.select( condlist, choicelist, 0 )
 
-        return np.asarray(proj_grad)
+        return proj_grad
 
 
 

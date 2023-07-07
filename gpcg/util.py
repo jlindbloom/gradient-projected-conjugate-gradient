@@ -71,14 +71,10 @@ def compute_mu(x, d, l, u, free_vars):
     upper_end = (u - x)/d
     lower_end = (l - x)/d
 
-    alphas = []
-    for j in range(n):
-        if d[j] >= 0:
-            alphas.append(upper_end[j])
-        else:
-            alphas.append(lower_end[j])
-
-    # Take the minimum
+    # New, much FASTER method
+    condlist = [d >= 0, d < 0]
+    choicelist = [upper_end, lower_end]
+    alphas = np.select(condlist, choicelist, 0)
     alpha = np.amin(alphas)
 
     return alpha
