@@ -27,7 +27,7 @@ class GPCGSolver:
         self.grad_qfunc = lambda x: (self.A @ x) - b
     
 
-    def solve(self, maxits=100,  tol=1e-4, eta1=0.1, eta2=0.25, mu=0.1, x0=None, bound_tol=1e-14):
+    def solve(self, maxits=100, tol=1e-4, eta1=0.1, eta2=0.25, mu=0.1, x0=None, bound_tol=1e-14):
         """Computes solution using the GPCG algorithm."""
 
         
