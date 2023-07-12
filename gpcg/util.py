@@ -1,10 +1,10 @@
 import numpy as np
 from scipy.sparse.linalg import LinearOperator
-from cupyx.scipy.sparse.linalg import LinearOperator as CuPyLinearOperator
 
 from . import CUPY_INSTALLED
 if CUPY_INSTALLED:
     import cupy as cp
+    from cupyx.scipy.sparse.linalg import LinearOperator as CuPyLinearOperator
 
 
 
