@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=59.2.0", "numpy", "scipy"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gpcg"
+version = "0.0.1"
+authors = [
+  { name="Jonathan Lindbloom", email="jonathan@lindbloom.com" },
+]
+description = "An implementation of a conjugate gradient algorithm (GPCG) for solving bound-constrained quadratic programs."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Mathematics",
+]
+keywords = ["quadratic programming", "conjugate gradient", "bound constraints"]
+
+[project.urls]
+"Homepage" = "https://github.com/jlindbloom/gradient-projected-conjugate-gradient"
+"Bug Tracker" = "https://github.com/jlindbloom/gradient-projected-conjugate-gradient/issues"

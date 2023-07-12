@@ -2,27 +2,34 @@ import numpy as np
 import scipy.sparse as sps
 
 
-# Create test signal
-def _make_1d_signal(x):
-    if x < 0.2:
-        return 0
-    elif (x >= 0.2) and (x < 0.4):
-        return 1 
-    elif (x >= 0.4) and (x < 0.6):
-        return 0
-    elif (x >= 0.6) and (x < 0.8):
-        return 2
-    elif (x >= 0.8) and (x <= 1.0):
-        return 0
-    else:
-        return 0
 
-make_1d_signal = np.vectorize(_make_1d_signal)
+# Create test signal
+def make_1d_signal(x):
+    """Makes a 1D test signal.
+    """
+
+    def _make_1d_signal(x):
+        if x < 0.2:
+            return 0
+        elif (x >= 0.2) and (x < 0.4):
+            return 1 
+        elif (x >= 0.4) and (x < 0.6):
+            return 0
+        elif (x >= 0.6) and (x < 0.8):
+            return 2
+        elif (x >= 0.8) and (x <= 1.0):
+            return 0
+        else:
+            return 0
+    
+    vecfunc = np.vectorize(_make_1d_signal)
+
+    return vecfunc(x)
 
 
 
 def make_shepp_logan_image(resolution):
-    """Builds some Shepp-Logan data.
+    """Builds some 2D Shepp-Logan data.
     """
 
     phantomData = np.zeros((resolution, resolution))
@@ -79,9 +86,7 @@ def make_shepp_logan_image(resolution):
 
 
 
-def build_1d_first_order_grad(N: int, 
-    boundary: str = "periodic",
-):
+def build_1d_first_order_grad(N, boundary="periodic"):
     """Constructs a SciPy sparse matrix that extracts the (1D) discrete gradient of an input signal.
     Boundary parameter specifies how to handle the boundary conditions.
     """
