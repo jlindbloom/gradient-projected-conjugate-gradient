@@ -6,7 +6,7 @@ This repository provides a Python implementation of the gradient projected conju
 ```
 where $b \in \mathbb{R}^n$ and $A \in \mathbb{R}^{n \times n}$ is a SPD matrix. Here the $l_i$ and/or $u_i$ may be infinite, e.g., we can solve quadratic programs with nonnegativity constraints.
 
-This implementation is still experimental. Install with ``pip install -e .`` or ``python setup.py``.
+Install with ``pip install gpcg``.
 
 ## References
 <a id="1">[1]</a> 
